@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LearnHere</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
+    />
+    <!-- Font Awesome Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .header {
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        background-color: #fff;
+      }
+
+      .header__logo-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .header__logo-image {
+        height: 50px;
+        margin-right: 10px;
+      }
+
+      .header__logo-text {
+        font-size: 40px;
+        font-weight: 900;
+        color: #007bff;
+      }
+
+      .header__nav {
+        display: flex;
+        gap: 20px;
+      }
+
+      .header__nav-link {
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration: none;
+        color: #000;
+        padding: 8px 12px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .header__nav-link:hover {
+        color: #007bff;
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+
+      .header__profile {
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .header__menu-icon {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      /* Auth Container */
+      .header__auth-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .header__auth-link {
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration: none;
+        color: #000;
+        padding: 8px 12px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .header__auth-link:hover {
+        color: #007bff;
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+
+      .header__account-icon {
+        font-size: 24px;
+        cursor: pointer;
+        color: #000;
+        margin-right: 15px;
+        margin-left: 5px;
+      }
+      .header__menu-icon_new {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      /* Mobile Responsive Design */
+      @media (max-width: 768px) {
+        body {
+          margin: 0;
+          font-family: "Inter", sans-serif;
+        }
+        .header {
+          width: auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 20px;
+        }
+
+        .header__logo-image {
+          height: 25px;
+        }
+
+        .header__logo-text {
+          font-size: 20px;
+          font-weight: 900;
+          color: #007bff;
+        }
+
+        .header__nav {
+          display: none;
+          width: 100%;
+          flex-direction: column;
+          gap: 10px;
+          background-color: #fff;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          padding: 10px 0;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          z-index: 999;
+        }
+
+        .header__menu-icon {
+          display: none;
+          font-size: 24px;
+          cursor: pointer;
+        }
+        .header__menu-icon_new {
+          display: flex;
+          font-size: 24px;
+          cursor: pointer;
+        }
+
+        .header__auth-container {
+          font-size: 8px;
+          display: flex;
+          align-items: end;
+          gap: 5px;
+          margin-left: 60px;
+        }
+        .header__auth-link {
+          font-size: 8px;
+          padding: 0;
+        }
+
+        .header__nav.open {
+          display: flex;
+        }
+
+        .header__nav-link {
+          padding: 12px;
+          font-size: 18px;
+          text-align: center;
+          width: 100%;
+          display: block;
+          border-bottom: 1px solid #ddd;
+        }
+
+        .header__nav-link:last-child {
+          border-bottom: none;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Footer Styles */
+      .footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        position: relative;
+        width: 100%;
+        bottom: 0;
+      }
+      .footer1 {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+      }
+      .footer2 {
+        width: 100%;
+      }
+      .footer-left {
+        height: 350px;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: left;
+        flex-basis: 40%;
+        background-color: #333;
+        padding: 20px;
+      }
+      .footer-right {
+        font-size: 15px;
+        display: flex;
+        height: 350px;
+        flex-direction: column;
+        gap: 5px;
+        text-align: right;
+        flex-basis: 60%;
+        background-color: #09062a;
+        padding: 20px;
+      }
+      .footer-right span {
+        font-weight: 400;
+      }
+      .footer-right .company-name {
+        font-weight: 700;
+      }
+      .footer-logoName {
+        font-size: 45px;
+      }
+      .footer_bottom {
+        height: 70px;
+        width: 100%;
+        background-color: #d5d5d5;
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
+        .footer-logoName {
+          font-size: 25px;
+        }
+        .footer {
+          flex-direction: column;
+          text-align: center;
+        }
+        .footer1 {
+          display: flex;
+          flex-direction: column;
+        }
+        .footer_bottom {
+          height: 40px;
+        }
+        .footer-left {
+          width: 100%;
+          height: 150px;
+        }
+        .footer-right {
+          width: 100%;
+          height: 150px;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__logo-container">
+        <img
+          src="external/learnhere1939-2g5-200h.png"
+          alt="LearnHere Logo"
+          class="header__logo-image"
+        />
+        <span class="header__logo-text">LearnHere</span>
+      </div>
+
+      <div class="header__menu-icon" onclick="toggleMenu()">&#9776;</div>
+
+      <nav class="header__nav">
+        <a href="#home" class="header__nav-link">Home</a>
+        <a href="#lessons" class="header__nav-link">Lessons</a>
+        <a href="#teachers" class="header__nav-link">Teachers</a>
+        <a href="#contact" class="header__nav-link">Contact Us</a>
+        <a href="#about" class="header__nav-link">About</a>
+      </nav>
+
+      <div class="header__auth-container">
+        <a href="#login" class="header__auth-link">Login</a> |
+        <a href="#register" class="header__auth-link">Register</a>
+        <a href="#login" class="header__auth-link">
+          <i class="fas fa-user header__account-icon"></i>
+        </a>
+      </div>
+      <div class="header__menu-icon_new" onclick="toggleMenu()">&#9776;</div>
+    </header>
+
+    <script>
+      let currentIndex = 0;
+      const images = document.querySelectorAll(".img_move"); // Corrected to select by class
+      const texts = document.querySelectorAll(".text_motive");
+
+      function showNextImage() {
+        // Hide the current image and text
+        images[currentIndex].classList.remove("active");
+        images[currentIndex].classList.add("move-left");
+        texts[currentIndex].classList.remove("active-text_motive");
+
+        // Move to the next image and text
+        currentIndex = (currentIndex + 1) % images.length;
+
+        // Show the next image and text
+        images[currentIndex].classList.remove("move-left");
+        images[currentIndex].classList.add("active");
+        texts[currentIndex].classList.add("active-text_motive");
+      }
+
+      // Initially show the first image and text
+      images[currentIndex].classList.add("active");
+      texts[currentIndex].classList.add("active-text_motive");
+
+      // Change the image and text every 4 seconds
+      setInterval(showNextImage, 4000); // Every 4 seconds
+    </script>
+
+    <!--Content Here-->Content Here
+
+    <!-- footer -->
+    <div class="footer">
+      <div class="footer1">
+        <div class="footer-left">
+          <span class="footer-logoName">LEARNHERE</span><br />
+          <span>e-Learning Platform</span>
+        </div>
+        <div class="footer-right">
+          <span>©2024 Online Virtual Learning. All Rights Reserved.</span>
+          <span>Web Development Company -</span>
+          <span class="company-name">DesignMosaic.S</span>
+        </div>
+      </div>
+      <div class="footer2"><div class="footer_bottom"></div></div>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        const nav = document.querySelector(".header__nav");
+        nav.classList.toggle("open");
+      }
+    </script>
+  </body>
+</html>
